@@ -4,7 +4,21 @@ Este é o projeto backend do **TaskFlow Manager**, construído com o framework [
 
 ## Começando
 
-Primeiro, certifique-se de que seu banco de dados PostgreSQL esteja em execução (conforme a configuração no arquivo `.env`, o padrão mapeia para um banco local na porta `5432`). 
+Primeiro, certifique-se de que seu banco de dados PostgreSQL esteja em execução na porta `5432`. Se você estiver usando o contêiner Docker padrão do projeto, inicie-o com:
+
+```bash
+# Para criar a primeira vez:
+docker run -d --name taskflow-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=taskflowmanager -p 5432:5432 postgres:16-alpine
+
+# No dia a dia, apenas ligue-o:
+docker start taskflow-postgres
+```
+
+Em seguida, crie um arquivo `.env` na raiz da pasta `backend` e adicione a string de conexão:
+
+```env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/taskflowmanager?schema=public"
+```
 
 Instale as dependências:
 

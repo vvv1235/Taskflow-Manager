@@ -14,16 +14,26 @@ O TaskFlow Manager é uma aplicação web full-stack desenvolvida para criar, or
    cd backend
    ```
 2. Inicie o banco de dados PostgreSQL via Docker:
-   ```bash
-   docker run -d --name taskflow-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=taskflowmanager -p 5432:5432 postgres:16-alpine
-   ```
-3. Instale as dependências e rode as migrações do Prisma:
+   * **Primeira vez (Criação):**
+     ```bash
+     docker run -d --name taskflow-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=taskflowmanager -p 5432:5432 postgres:16-alpine
+     ```
+   * **No dia a dia (Apenas ligar o banco):**
+     ```bash
+     docker start taskflow-postgres
+     ```
+3. Crie o arquivo de variáveis de ambiente:
+   * Crie um arquivo chamado `.env` na pasta `backend` e adicione a conexão com o banco:
+     ```env
+     DATABASE_URL="postgresql://postgres:postgres@localhost:5432/taskflowmanager?schema=public"
+     ```
+4. Instale as dependências e rode as migrações do Prisma:
    ```bash
    npm install
    npx prisma migrate dev
    npx prisma db seed
    ```
-4. Inicie o servidor (rodará na porta 3001)
+5. Inicie o servidor (rodará na porta 3001)
    ```bash
    npm run start:dev
    ```
