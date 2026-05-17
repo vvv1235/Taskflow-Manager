@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  /* Life is Strange / Notebook Aesthetic */
+  --color-background: #fdfbf7; /* Cream Paper */
+  --color-foreground: #334155; /* Soft Graphite Ink */
+  --color-card: #f9f5eb; /* Slightly darker cream for cards */
+  --color-card-border: #e2e8f0; 
+  --color-primary: #3b82f6; /* Blue Pen */
+  --color-primary-hover: #2563eb; 
+  
+  --color-priority-high: #ef4444; /* Red Pen */
+  --color-priority-medium: #f59e0b; /* Yellow Highlighter */
+  --color-priority-low: #10b981; /* Green Marker */
+  
+  --color-status-pending: #94a3b8; /* Pencil sketch */
+  --color-status-progress: #3b82f6; /* Blue Pen */
+  --color-status-completed: #10b981; /* Green check */
+  
+  --font-caveat: "Caveat", cursive;
+  --font-nunito: "Nunito", sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #fdfbf7;
+    --foreground: #334155;
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-nunito), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-handwriting {
+    font-family: var(--font-caveat), cursive;
+  }
+}
+
+@layer utilities {
+  .notebook-paper {
+    background-color: #fdfbf7;
+  }
+  
+  /* Linhas pautadas de caderno colegial na horizontal */
+  .notebook-lines {
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      rgba(59, 130, 246, 0.15) 31px,
+      rgba(59, 130, 246, 0.15) 32px
+    );
+    background-attachment: local;
+  }
+
+  /* Red border vertical line like a strict school notebook margin */
+  .notebook-lines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 48px;
+    width: 2px;
+    background-color: rgba(239, 68, 68, 0.2);
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* Substitute for legacy glass-card */
+  .glass-card {
+    @apply bg-[#fffaeb] border-2 border-[#e2e8f0] shadow-[3px_5px_15px_rgba(0,0,0,0.06)] rounded-sm;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; /* Sketchy hand-drawn border */
+  }
+  
+  /* Substitute for legacy glass-panel */
+  .glass-panel {
+    @apply bg-white/90 backdrop-blur-sm border-2 border-[#e2e8f0] shadow-xl p-6;
+    border-radius: 10px 225px 15px 255px / 255px 15px 225px 15px;
+  }
+
+  .post-it {
+    @apply shadow-md transition-all duration-300;
+    border-radius: 2px 15px 2px 15px / 15px 2px 15px 2px;
+  }
+  
+  .post-it-yellow {
+    @apply bg-[#fef08a] text-[#453c0a];
+  }
+
+  .post-it-blue {
+    @apply bg-[#bae6fd] text-[#0c4a6e];
+  }
+
+  .post-it-pink {
+    @apply bg-[#fbcfe8] text-[#831843];
+  }
+
+  .hand-drawn-border {
+    border-style: solid;
+    border-width: 2px;
+    border-color: currentColor;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-[#1d4ed8] to-[#1e3a8a];
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
