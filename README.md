@@ -81,3 +81,28 @@ Essa decisão se apoia nos seguintes pilares:
 - Criação e exclusão de categorias personalizadas com sistema de cores.
 - Detalhes integrais de cada tarefa com mudança rápida de status.
 - Formulários avançados com seleção múltipla de categorias (relacionamento *Many-to-Many* real no banco).
+
+## Telas
+
+Abaixo estão as principais telas da aplicação:
+
+### Minhas Tarefas
+
+![Minha Tarefas](./Telas/Tela_Minhas_Tarefas.png)
+
+### Criar Tarefa
+
+![Criar Tarefa](./Telas/Tela_Criar_Tarefa.png)
+
+### Tela da Tarefa
+
+![Tarefa](./Telas/Tela_Tarefa.png)
+
+### Editar Tarefa
+
+![Editar Tarefa](./Telas/Tela_Editar_Tarefa.png)
+
+### Categoria de Tarefas
+
+![Categoria de Tarefas](./Telas/Tela_Categoria_de_Tarefas.png)
+
